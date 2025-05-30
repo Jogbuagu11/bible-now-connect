@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle, Mail, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const NewsletterSignup = () => {
   const [email, setEmail] = useState('');
@@ -41,11 +42,19 @@ const NewsletterSignup = () => {
     setIsLoading(true);
     
     try {
-      // TODO: Replace with actual Supabase integration
-      // Simulate API call for now
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log('Attempting to save email to newsletter_subscribers:', email);
       
-      console.log('Newsletter signup:', { email, timestamp: new Date().toISOString() });
+      // Save to Supabase newsletter_subscribers table
+      const { data, error } = await supabase
+        .from('newsletter_subscribers')
+        .insert([{ email: email.toLowerCase().trim() }]);
+
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
+      console.log('Successfully saved email to database:', data);
       
       setIsSubmitted(true);
       setEmail('');
