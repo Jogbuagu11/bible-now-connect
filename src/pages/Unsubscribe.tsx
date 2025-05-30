@@ -57,17 +57,16 @@ const Unsubscribe = () => {
       
       const normalizedEmail = emailToUnsubscribe.toLowerCase().trim();
       
-      // First, check if the email exists in the database
+      // Check if the email exists in the database using maybeSingle to avoid errors
       const { data: existingData, error: checkError } = await supabase
         .from('newsletter_subscribers')
         .select('*')
         .eq('email', normalizedEmail)
-        .single();
+        .maybeSingle();
 
       console.log('Email check result:', { existingData, checkError });
 
-      if (checkError && checkError.code !== 'PGRST116') {
-        // PGRST116 is "not found" error, other errors are actual problems
+      if (checkError) {
         console.error('Database error during email check:', checkError);
         toast({
           title: "Error",
