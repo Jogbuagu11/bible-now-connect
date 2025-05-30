@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -69,7 +68,7 @@ const NewsletterSignup = () => {
 
   if (isSubmitted) {
     return (
-      <Card className="w-full max-w-2xl mx-auto bg-gradient-card border-bible-brown-700 animate-scale-in">
+      <Card className="w-full max-w-4xl mx-auto bg-gradient-card border-bible-brown-700 animate-scale-in">
         <CardContent className="p-12 text-center">
           <CheckCircle className="w-20 h-20 text-bible-gold-400 mx-auto mb-6" />
           <h3 className="text-3xl font-semibold text-bible-beige-50 mb-4">
@@ -78,20 +77,29 @@ const NewsletterSignup = () => {
           <p className="text-lg text-bible-beige-200 mb-8">
             You'll receive our latest updates and insights directly in your inbox.
           </p>
-          <Button 
-            onClick={() => setIsSubmitted(false)}
-            variant="outline"
-            className="border-bible-gold-400 text-bible-gold-400 hover:bg-bible-gold-400 hover:text-bible-brown-950"
-          >
-            Subscribe Another Email
-          </Button>
+          <div className="space-y-4">
+            <Button 
+              onClick={() => setIsSubmitted(false)}
+              variant="outline"
+              className="border-bible-gold-400 text-bible-gold-400 hover:bg-bible-gold-400 hover:text-bible-brown-950"
+            >
+              Subscribe Another Email
+            </Button>
+            <br />
+            <Button 
+              asChild
+              className="bg-bible-gold-400 hover:bg-bible-gold-500 text-bible-brown-950 font-semibold"
+            >
+              <a href="https://biblenow.io">Back to Homepage</a>
+            </Button>
+          </div>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto bg-gradient-card border-bible-brown-700 shadow-2xl animate-fade-in">
+    <Card className="w-full max-w-4xl mx-auto bg-gradient-card border-bible-brown-700 shadow-2xl animate-fade-in">
       <CardContent className="p-12">
         <div className="text-center mb-8">
           <Mail className="w-16 h-16 text-bible-gold-400 mx-auto mb-6" />
