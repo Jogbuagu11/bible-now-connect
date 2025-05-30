@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -54,10 +53,15 @@ const Unsubscribe = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase
+      console.log('Attempting to unsubscribe email:', emailToUnsubscribe);
+      
+      const { data, error } = await supabase
         .from('newsletter_subscribers')
         .update({ unsubscribed: true })
-        .eq('email', emailToUnsubscribe);
+        .eq('email', emailToUnsubscribe.toLowerCase().trim())
+        .select();
+
+      console.log('Unsubscribe response:', { data, error });
 
       if (error) {
         console.error('Unsubscribe error:', error);
@@ -66,11 +70,19 @@ const Unsubscribe = () => {
           description: "Something went wrong. Please try again.",
           variant: "destructive",
         });
-      } else {
+      } else if (data && data.length > 0) {
+        console.log('Successfully unsubscribed:', data);
         setIsUnsubscribed(true);
         toast({
           title: "Successfully unsubscribed",
           description: "You have been removed from our newsletter.",
+        });
+      } else {
+        console.log('No matching email found in database');
+        toast({
+          title: "Email not found",
+          description: "This email address is not in our newsletter list.",
+          variant: "destructive",
         });
       }
     } catch (error) {
@@ -109,10 +121,15 @@ const Unsubscribe = () => {
     setIsLoading(true);
     
     try {
-      const { error } = await supabase
+      console.log('Attempting to resubscribe email:', email);
+      
+      const { data, error } = await supabase
         .from('newsletter_subscribers')
         .update({ unsubscribed: false })
-        .eq('email', email);
+        .eq('email', email.toLowerCase().trim())
+        .select();
+
+      console.log('Resubscribe response:', { data, error });
 
       if (error) {
         console.error('Resubscribe error:', error);
@@ -121,12 +138,20 @@ const Unsubscribe = () => {
           description: "Something went wrong. Please try again.",
           variant: "destructive",
         });
-      } else {
+      } else if (data && data.length > 0) {
+        console.log('Successfully resubscribed:', data);
         setIsUnsubscribed(false);
         setShowResubscribe(false);
         toast({
           title: "Successfully resubscribed",
           description: "You have been added back to our newsletter.",
+        });
+      } else {
+        console.log('No matching email found for resubscribe');
+        toast({
+          title: "Email not found",
+          description: "This email address is not in our newsletter list.",
+          variant: "destructive",
         });
       }
     } catch (error) {
