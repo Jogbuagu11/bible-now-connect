@@ -19,11 +19,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-bible-beige-50 mb-4">BibleNOW Apps</h4>
             <ul className="space-y-2">
-              <li><a href="https://biblenow.io/read" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Read</a></li>
-              <li><a href="https://biblenow.io/social" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Social</a></li>
-              <li><a href="https://biblenow.io/live" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Live</a></li>
-              <li><a href="https://biblenow.io/learn" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Learn</a></li>
-              <li><a href="https://biblenow.io/play" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Play</a></li>
+              <li><span className="text-bible-beige-300 text-sm">Read</span></li>
+              <li><span className="text-bible-beige-300 text-sm">Social</span></li>
+              <li><span className="text-bible-beige-300 text-sm">Live</span></li>
+              <li><span className="text-bible-beige-300 text-sm">Learn</span></li>
+              <li><span className="text-bible-beige-300 text-sm">Play</span></li>
             </ul>
           </div>
 
@@ -31,11 +31,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-bible-beige-50 mb-4">About</h4>
             <ul className="space-y-2">
-              <li><a href="https://biblenow.io/about" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">About Us</a></li>
-              <li><a href="https://biblenow.io/contact" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Contact</a></li>
-              <li><a href="https://biblenow.io/support" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Support</a></li>
-              <li><a href="https://biblenow.io/faq" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">F.A.Q's</a></li>
-              <li><a href="https://biblenow.io/help" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Help Center</a></li>
+              <li><a href="https://about.biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">About Us</a></li>
+              <li><a href="https://contact.biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Contact</a></li>
+              <li><a href="https://contribute.biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Support</a></li>
+              <li><a href="https://faq.biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">F.A.Q's</a></li>
+              <li><a href="https://help.biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors text-sm">Help Center</a></li>
             </ul>
           </div>
 
@@ -46,18 +46,18 @@ const Footer = () => {
               Experience BibleNOW on your mobile device. Download our app today!
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
+              <a href="https://facebook.com/biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
+              <a href="https://instagram.com/biblenow.io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
+              <a href="https://x.com/biblenowio" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
                 </svg>
               </a>
-              <a href="#" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
+              <a href="https://youtube.com/@Biblenow-io" className="text-bible-beige-300 hover:text-bible-gold-400 transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
