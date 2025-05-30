@@ -60,10 +60,14 @@
   }
   
   .bg-gradient-primary {
-    background: linear-gradient(135deg, theme(colors.bible-brown.800), theme(colors.bible-brown.900));
+    background: linear-gradient(135deg, theme(colors.bible-brown.700), theme(colors.bible-brown.800));
   }
   
   .bg-gradient-card {
     background: linear-gradient(135deg, theme(colors.bible-brown.900), theme(colors.bible-brown.800));
+  }
+  
+  .bg-footer {
+    background: linear-gradient(135deg, theme(colors.bible-brown.800), theme(colors.bible-brown.900));
   }
 }

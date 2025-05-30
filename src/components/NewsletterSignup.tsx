@@ -69,13 +69,13 @@ const NewsletterSignup = () => {
 
   if (isSubmitted) {
     return (
-      <Card className="w-full max-w-md mx-auto bg-gradient-card border-bible-brown-700 animate-scale-in">
-        <CardContent className="p-8 text-center">
-          <CheckCircle className="w-16 h-16 text-bible-gold-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-semibold text-bible-beige-50 mb-2">
+      <Card className="w-full max-w-2xl mx-auto bg-gradient-card border-bible-brown-700 animate-scale-in">
+        <CardContent className="p-12 text-center">
+          <CheckCircle className="w-20 h-20 text-bible-gold-400 mx-auto mb-6" />
+          <h3 className="text-3xl font-semibold text-bible-beige-50 mb-4">
             Thank you for subscribing to BibleNOW!
           </h3>
-          <p className="text-bible-beige-200 mb-6">
+          <p className="text-lg text-bible-beige-200 mb-8">
             You'll receive our latest updates and insights directly in your inbox.
           </p>
           <Button 
@@ -91,21 +91,21 @@ const NewsletterSignup = () => {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-gradient-card border-bible-brown-700 shadow-2xl animate-fade-in">
-      <CardContent className="p-8">
-        <div className="text-center mb-6">
-          <Mail className="w-12 h-12 text-bible-gold-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-semibold text-bible-beige-50 mb-2">
+    <Card className="w-full max-w-2xl mx-auto bg-gradient-card border-bible-brown-700 shadow-2xl animate-fade-in">
+      <CardContent className="p-12">
+        <div className="text-center mb-8">
+          <Mail className="w-16 h-16 text-bible-gold-400 mx-auto mb-6" />
+          <h3 className="text-3xl font-semibold text-bible-beige-50 mb-4">
             Join Our Newsletter
           </h3>
-          <p className="text-bible-beige-200">
+          <p className="text-lg text-bible-beige-200">
             Stay connected with BibleNOW updates and insights
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-bible-beige-100">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-3">
+            <Label htmlFor="email" className="text-bible-beige-100 text-lg">
               Email Address
             </Label>
             <Input
@@ -114,23 +114,23 @@ const NewsletterSignup = () => {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-bible-brown-800 border-bible-brown-600 text-bible-beige-50 placeholder:text-bible-beige-400 focus:border-bible-gold-400 focus:ring-bible-gold-400"
+              className="bg-bible-brown-800 border-bible-brown-600 text-bible-beige-50 placeholder:text-bible-beige-400 focus:border-bible-gold-400 focus:ring-bible-gold-400 h-12 text-lg"
               disabled={isLoading}
             />
           </div>
 
           <Button 
             type="submit"
-            className="w-full bg-bible-gold-400 hover:bg-bible-gold-500 text-bible-brown-950 font-semibold py-3 transition-all duration-200 transform hover:scale-105"
+            className="w-full bg-bible-gold-400 hover:bg-bible-gold-500 text-bible-brown-950 font-semibold py-4 text-lg transition-all duration-200 transform hover:scale-105"
             disabled={isLoading}
           >
             {isLoading ? 'Subscribing...' : 'Subscribe'}
           </Button>
         </form>
 
-        <div className="mt-6 flex items-center justify-center text-sm text-bible-beige-300">
-          <Shield className="w-4 h-4 mr-2" />
-          <span>We respect your privacy and won't spam. Unsubscribe anytime.</span>
+        <div className="mt-8 flex items-center justify-center text-bible-beige-300">
+          <Shield className="w-5 h-5 mr-3" />
+          <span className="text-center">We respect your privacy and won't spam. Unsubscribe anytime.</span>
         </div>
       </CardContent>
     </Card>
