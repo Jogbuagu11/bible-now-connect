@@ -55,13 +55,47 @@ const Unsubscribe = () => {
     try {
       console.log('Attempting to unsubscribe email:', emailToUnsubscribe);
       
+      const normalizedEmail = emailToUnsubscribe.toLowerCase().trim();
+      
+      // First, check if the email exists in the database
+      const { data: existingData, error: checkError } = await supabase
+        .from('newsletter_subscribers')
+        .select('*')
+        .eq('email', normalizedEmail)
+        .single();
+
+      console.log('Email check result:', { existingData, checkError });
+
+      if (checkError && checkError.code !== 'PGRST116') {
+        // PGRST116 is "not found" error, other errors are actual problems
+        console.error('Database error during email check:', checkError);
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (!existingData) {
+        // Email doesn't exist in database
+        console.log('Email not found in database');
+        toast({
+          title: "Email not found",
+          description: "This email address is not in our newsletter list.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Email exists, now update it to unsubscribed
       const { data, error } = await supabase
         .from('newsletter_subscribers')
         .update({ unsubscribed: true })
-        .eq('email', emailToUnsubscribe.toLowerCase().trim())
+        .eq('email', normalizedEmail)
         .select();
 
-      console.log('Unsubscribe response:', { data, error });
+      console.log('Unsubscribe update response:', { data, error });
 
       if (error) {
         console.error('Unsubscribe error:', error);
@@ -70,19 +104,12 @@ const Unsubscribe = () => {
           description: "Something went wrong. Please try again.",
           variant: "destructive",
         });
-      } else if (data && data.length > 0) {
+      } else {
         console.log('Successfully unsubscribed:', data);
         setIsUnsubscribed(true);
         toast({
           title: "Successfully unsubscribed",
           description: "You have been removed from our newsletter.",
-        });
-      } else {
-        console.log('No matching email found in database');
-        toast({
-          title: "Email not found",
-          description: "This email address is not in our newsletter list.",
-          variant: "destructive",
         });
       }
     } catch (error) {
